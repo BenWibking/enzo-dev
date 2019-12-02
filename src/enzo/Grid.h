@@ -1782,36 +1782,37 @@ iveParticles; };
                    star_data *&List, int CopyDirection);
 
   // Only used for static hierarchies
-  int MoveSubgridStars(int NumberOfSubgrids, grid *ToGrids[],
-                       int AllLocal);
-  int MoveSubgridActiveParticles(int NumberOfSubgrids, grid *ToGrids[],
-                                 int AllLocal);
-  int TransferSubgridParticles(grid *Subgrids[], int NumberOfSubgrids,
-                               int *&NumberToMove, int StartIndex,
-                               int EndIndex, particle_data *&List,
-                               bool KeepLocal, bool ParticlesAreLocal,
-                               int CopyDirection,
-                               int IncludeGhostZones = FALSE,
-                               int CountOnly = FALSE);
+  int MoveSubgridStars(int NumberOfSubgrids, grid* ToGrids[],
+		       int AllLocal);
+  int MoveSubgridActiveParticles(int NumberOfSubgrids, grid* ToGrids[],
+                 int AllLocal);
+  int TransferSubgridParticles(grid* Subgrids[], int NumberOfSubgrids, 
+			       int* &NumberToMove, int StartIndex, 
+			       int EndIndex, particle_data* &List, 
+			       bool KeepLocal, bool ParticlesAreLocal,
+			       int CopyDirection,
+			       int IncludeGhostZones = FALSE,
+			       int CountOnly = FALSE);
 
-  int TransferSubgridStars(grid *Subgrids[], int NumberOfSubgrids,
-                           int *&NumberToMove, int StartIndex,
-                           int EndIndex, star_data *&List,
-                           bool KeepLocal, bool ParticlesAreLocal,
-                           int CopyDirection,
-                           int IncludeGhostZones = FALSE);
+  int TransferSubgridStars(grid* Subgrids[], int NumberOfSubgrids, 
+			   int* &NumberToMove, int StartIndex, 
+			   int EndIndex, star_data* &List, 
+			   bool KeepLocal, bool ParticlesAreLocal,
+			   int CopyDirection,
+			   int IncludeGhostZones = FALSE,
+                           int CountOnly = FALSE);
 
-  int TransferSubgridActiveParticles(grid *Subgrids[], int NumberOfSubgrids,
-                                     int *&NumberToMove, int StartIndex,
-                                     int EndIndex, ActiveParticleList<ActiveParticleType> &List,
-                                     bool KeepLocal, bool ParticlesAreLocal,
-                                     int CopyDirection,
-                                     int IncludeGhostZones = FALSE,
-                                     int CountOnly = FALSE);
-  // -------------------------------------------------------------------------
-  // Helper functions (should be made private)
-  //
+  int TransferSubgridActiveParticles(grid* Subgrids[], int NumberOfSubgrids,
+                     int* &NumberToMove, int StartIndex,
+                     int EndIndex, ActiveParticleList<ActiveParticleType> &List,
+                     bool KeepLocal, bool ParticlesAreLocal,
+                     int CopyDirection,
+                     int IncludeGhostZones = FALSE,
+                     int CountOnly = FALSE);
 
+// -------------------------------------------------------------------------
+// Helper functions (should be made private)
+//
   /* This is a simple helper function which determines if the method
      should return immediately because of communication-mode reasons.
      Assumes that info is being sent from the "other-grid" processor to
