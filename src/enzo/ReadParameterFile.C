@@ -607,34 +607,6 @@ int ReadParameterFile(FILE *fptr, TopGridData &MetaData, float *Initialdt)
     ret += sscanf(line, "SGScoeffSSb =%"FSYM, &SGScoeffSSb);
     ret += sscanf(line, "SGScoeffSSemf = %"FSYM, &SGScoeffSSemf);
 
-    ret += sscanf(line, "use_grackle = %"ISYM, &use_grackle);
-    
-#ifdef USE_GRACKLE
-    /* Grackle chemistry parameters */
-    ret += sscanf(line, "with_radiative_cooling = %d",
-                  &grackle_data->with_radiative_cooling);
-    ret += sscanf(line, "use_volumetric_heating_rate = %d",
-                  &grackle_data->use_volumetric_heating_rate);
-    ret += sscanf(line, "use_specific_heating_rate = %d",
-                  &grackle_data->use_specific_heating_rate);
-    ret += sscanf(line, "self_shielding_method = %d",
-                  &grackle_data->self_shielding_method);
-    ret += sscanf(line, "H2_self_shielding = %d",
-                  &grackle_data->H2_self_shielding);
-
-    if (sscanf(line, "grackle_data_file = %s", dummy) == 1) {
-      grackle_data->grackle_data_file = dummy;
-      ret++;
-    }
-    ret += sscanf(line, "UVbackground = %d", &grackle_data->UVbackground);
-    ret += sscanf(line, "Compton_xray_heating = %d",
-                  &grackle_data->Compton_xray_heating);
-    ret += sscanf(line, "LWbackground_intensity = %lf",
-                  &grackle_data->LWbackground_intensity);
-    ret += sscanf(line, "LWbackground_sawtooth_suppression = %d",
-                  &grackle_data->LWbackground_sawtooth_suppression);
-    /********************************/
-#endif
 
     ret += sscanf(line, "RadiativeCooling = %"ISYM, &RadiativeCooling);
     ret += sscanf(line, "RadiativeCoolingModel = %"ISYM, &RadiativeCoolingModel);
